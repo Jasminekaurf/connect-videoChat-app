@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: url(imgs/bg1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+header{
+    position: relative;
+    top: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    position: relative;
+    color: #343030;
+    font-size: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+header .navigation h1{
+    color: #343030;
+    font-size: 30px;
+    font-family: sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 2px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+    transition-property: background;
+}
+
+/* header .navigation a:not(:last-child){
+    margin-right: 30px;
+}
+
+header .navigation a:hover{
+    background: #fff;
+} */
+
+.content{
+    max-width: 650px;
+    margin: 60px 100px;
+}
+
+.content .info h2{
+    color: #343030;
+    font-size: 55px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 60px;
+    margin-bottom: 30px;
+}
+
+.content .info p{
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #343030;
+}
+
+.content .meet-btn {
+    color: #fff;
+    background-color:#343030;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.content .meet-btn:hover {
+    background-color: #343030;
+}
+
+input {
+    width: 252px;
+    height: 42px;
+    
+}
+
+.meetingOptions{
+    height: 40px;
+}
+
+button{
+    border: 0;
+}

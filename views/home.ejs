@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONNECT</title>
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+    <section>
+        <header>
+            <h2><a href="#" class="logo">CONNECT</a><i class="fas fa-link"></i></h2>
+            <div class="navigation">
+                <h1><%= day %></h1> 
+            </div>
+        </header>
+        <div class="content">
+            <div class="info">
+                <h2>Anytime,<br> Anywhere !</h2>
+                <p>An easy to use, Stress free,<br>Online meeting experience.</p>
+                <div class="meetingOptions"><a href="/new%20meeting" class="start-btn meet-btn">New Meeting</a></div>
+                <form action="/join-room" method="post">
+                    <div class="meetingOptions">
+                        <input type="text" placeholder="Enter room Id" name="roomURL">
+                        <button type="submit" class="join-btn meet-btn">JOIN MEETING</button>
+                    </div>
+                </form>
+                            
+            </div>
+        </div>
+    </section>
+   
+</body>
+</html>
