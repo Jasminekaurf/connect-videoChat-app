@@ -3,7 +3,7 @@ const socket = io('/');
 const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 myVideo.muted=true;
-const user = prompt("Enter your name: ");
+
 
 var peer = new Peer(undefined, {
   path: "/peerjs",

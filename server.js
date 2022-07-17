@@ -25,24 +25,26 @@ let options = {
 };
 
 let day = today.toLocaleDateString("en-IN",options);
+let user;
 
 app.get("/", (req, res) => {
     res.render('home',{day: day}); 
 });
 
-app.get("/new%20meeting", (req, res) => {
+app.post("/newMeeting", (req, res) => {
+    user = req.body.user;
     res.redirect(`/${uuidv4()}`); 
 });
   
-app.get("/:room", (req, res) => {
-    res.render("room", { roomId: req.params.room });
-});
-
-app.post("/join-room",(req,res)=>{
+app.post("/joinMeeting",(req,res)=>{
     let roomURL = req.body.roomURL;
-    let url='/'+roomURL;
+    user = req.body.user;
     res.redirect('/'+roomURL);
 })
+
+app.get("/:room", (req, res) => {
+    res.render("room", { roomId: req.params.room, user: user });
+});
 
 io.on('connection', socket => {
     socket.on('join-room',(roomId, userId, userName)=>{

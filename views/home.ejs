@@ -23,13 +23,77 @@
             <div class="info">
                 <h2>Anytime,<br> Anywhere !</h2>
                 <p>An easy to use, Stress free,<br>Online meeting experience.</p>
-                <div class="meetingOptions"><a href="/new%20meeting" class="start-btn meet-btn">New Meeting</a></div>
-                <form action="/join-room" method="post">
-                    <div class="meetingOptions">
-                        <input type="text" placeholder="Enter room Id" name="roomURL">
-                        <button type="submit" class="join-btn meet-btn">JOIN MEETING</button>
+                <!-- Button trigger modal - start meet -->
+                <button type="button" class="start-btn meet-btn" data-bs-toggle="modal" data-bs-target="#newMeetModal">
+                    New Meeting
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="newMeetModal" tabindex="-1" aria-labelledby="newMeetModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="newMeetModalLabel">
+                                    Start a New Meeting...
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/newMeeting" method="post">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" name="user"
+                                            placeholder="Enter your name..."  autocomplete="off"/>
+                                    </div>
+                                    <button type="submit" class="start-btn meet-btn">
+                                        Start Meeting
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </form>
+                </div>
+
+
+                <!-- Button trigger modal - join meet --->
+                <button type="button" class="join-btn meet-btn" data-bs-toggle="modal" data-bs-target="#joinMeetModal">
+                    Join Meeting
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="joinMeetModal" tabindex="-1" aria-labelledby="joinMeetModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="joinMeetModalLabel">
+                                    Join an existing meeting...
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/joinMeeting" method="post">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" name="user"
+                                            placeholder="Enter your name..."  autocomplete="off"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="roomId" class="form-label">Room Id</label>
+                                        <input type="text" class="form-control" id="roomId" name="roomURL"
+                                            placeholder="Enter room Id..." autocomplete="off"/>
+                                    </div>
+                                    <button type="submit" class="join-btn meet-btn">
+                                        Join Meeting
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                             
             </div>
         </div>
