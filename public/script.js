@@ -198,12 +198,20 @@ let captureStream = null;
 })
 
 
+//invite option - copy link and share
+function copyRoomId(){
+  let room=document.getElementById('roomLink');
+  room.select();
+  document.execCommand("copy");
+}
 
-//remove user
-const hangup = document.querySelector("#hangup");
-hangup.addEventListener("click",(e)=>{
-  socket.emit("disconnect");
-})
+
+//end call
+function endCall(){
+  console.log('leaving');
+  window.location.replace("/");
+}
+
 
 socket.on('user-disconnected', (userId,userName) => {
   setTimeout(() => {
