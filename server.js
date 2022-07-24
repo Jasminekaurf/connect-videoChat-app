@@ -2,7 +2,11 @@ const express = require('express');
 const app =  express();
 const server = require('http').Server(app);
 const { v4: uuidv4 } = require('uuid'); // to generate unique rooms
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+    cors: {
+        origin: '*'
+      }
+});
 const { ExpressPeerServer } = require("peer");
 const bodyParser = require('body-parser');
 const peerServer = ExpressPeerServer(server, {
