@@ -87,12 +87,12 @@ function muteUnmuteAudio(){
   if (enabled) {
     myVideoStream.getAudioTracks()[0].enabled = false;
     html = `<i class="fas fa-microphone-slash"></i>`;
-    toggleAudio.classList.add("background-red")
+    toggleAudio.style.color="red";
     toggleAudio.innerHTML = html;
   } else {
     myVideoStream.getAudioTracks()[0].enabled = true;
     html = `<i class="fas fa-microphone"></i>`;
-    toggleAudio.classList.remove("background-red")
+    toggleAudio.style.color="green";
     toggleAudio.innerHTML = html;
   }
 }
@@ -105,12 +105,12 @@ function playPauseVideo(){
   if (enabled) {
     myVideoStream.getVideoTracks()[0].enabled = false;
     html = `<i class="fas fa-video-slash"></i>`;
-    toggleVideo.classList.add("background-red");
+    toggleVideo.style.color="red";
     toggleVideo.innerHTML = html;
   } else {
     myVideoStream.getVideoTracks()[0].enabled = true;
     html = `<i class="fas fa-video"></i>`;
-    toggleVideo.classList.remove("background-red");
+    toggleVideo.style.color="green";
     toggleVideo.innerHTML = html;
   }
 }

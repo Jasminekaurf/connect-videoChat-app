@@ -83,12 +83,12 @@ video {
   margin: 0 0.5rem;
 }
 
-.background-red {
-  background-color: red;
+#toggleVideo{
+  color: green;
 }
 
-.background-green {
-  background-color: green;
+#toggleAudio{
+  color: green;
 }
 
 .main-right {
