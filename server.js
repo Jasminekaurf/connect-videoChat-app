@@ -9,6 +9,7 @@ const peerServer = ExpressPeerServer(server, {
   debug: true,
 });
 
+let port = process.env.PORT || 3030;
 
 app.use("/peerjs", peerServer); 
 app.use(bodyParser.urlencoded({ extended: true })); 
@@ -63,4 +64,4 @@ io.on('connection', socket => {
     })
 })
 
-server.listen(3030);
+server.listen(port);
