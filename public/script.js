@@ -1,4 +1,4 @@
-const socket = io('/connect-video-chat-application.herokuapp.com');
+const socket = io('/');
 
 const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
@@ -7,7 +7,7 @@ myVideo.muted=true;
 
 var peer = new Peer(undefined, {
   path: "/peerjs",
-  host: "/connect-video-chat-application.herokuapp.com",
+  host: "/",
   port: "443"
 });
 
