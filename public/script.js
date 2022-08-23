@@ -171,31 +171,84 @@ socket.on("createMessage", (message, userName) => {
 
 
 // screen share feature
-const shareScreen =document.querySelector("#shareScreen");
-shareScreen.addEventListener("click", async ()=>{
-const video = document.createElement("video");
-let captureStream = null;
+// const shareScreen =document.querySelector("#shareScreen");
+// shareScreen.addEventListener("click", async ()=>{
+// const video = document.createElement("video");
+// let captureStream = null;
 
-  try {
-    captureStream = await navigator.mediaDevices.getDisplayMedia();
-    let Sender = peer.getSenders().map(function (sender) {
-      Sender.replaceTrack(captureStream.getTracks().find(function (track) {
-          return track.kind === sender.track.kind;
-      }));
-  });
-    Sender.replaceTrack(captureStream)
-    addVideoStream(video, captureStream);
-    video.srcObject = captureStream;
-    video.onloadedmetadata = function(e) {
-      video.play();
-      videoGrid.append(video);
-    };
+//   try {
+//     captureStream = await navigator.mediaDevices.getDisplayMedia();
+//     let Sender = peer.getSenders().map(function (sender) {
+//       Sender.replaceTrack(captureStream.getTracks().find(function (track) {
+//           return track.kind === sender.track.kind;
+//       }));
+//   });
+//     Sender.replaceTrack(captureStream)
+//     addVideoStream(video, captureStream);
+//     video.srcObject = captureStream;
+//     video.onloadedmetadata = function(e) {
+//       video.play();
+//       videoGrid.append(video);
+//     };
 
-  } catch(err) {
-    console.error("Error: " + err);
+//   } catch(err) {
+//     console.error("Error: " + err);
+//   }
+//     return captureStream;
+// })
+
+const shareScreen = document.querySelector("#shareScreen");
+shareScreen.addEventListener("click", async() =>{
+  
+  console.log('getting track');
+  const mediaStream = await getLocalScreenCaptureStream();
+
+  const screenTrack = mediaStream.getVideoTracks()[0];
+  console.log('video track')
+
+  if(screenTrack){
+    console.log('replacing')
+    replaceTrack(screenTrack);
   }
-    return captureStream;
+
+  screenTrack.onended = function () {  //when user clicks on 'Stop Sharing' button on browser
+    console.log('stopping')
+    stopShare(screenTrack);
+  };
+
 })
+
+const getLocalScreenCaptureStream = async () => {
+  try {
+    const constraints = { video: { cursor: 'always' }, audio: false };
+    const screenCaptureStream = await navigator.mediaDevices.getDisplayMedia(constraints);
+
+    return screenCaptureStream;
+  } catch (error) {
+    console.error('failed to get local screen', error);
+  }
+};
+
+const replaceTrack = (newTrack) => {
+  for (let i=0; i< peers.length; i++){        
+    let sender= peers[i].getSenders().find(function(sender){
+       return sender.track.kind == newTrack.kind;
+    })           
+    sender.replaceTrack(streamTrack);
+  }
+}
+
+const stopShare= (screenTrack) =>{
+  screenTrack.stop();
+  let videoTrack = myVideoStream.getVideoTracks()[0];
+  for (let i=0; i< peers.length; i++){
+      let sender = peers[i].getSenders().find(function(sender){
+          return sender.track.kind == videoTrack.kind;
+        }) 
+      sender.replaceTrack(videoTrack);
+  } 
+}
+
 
 
 //invite option - copy link and share
